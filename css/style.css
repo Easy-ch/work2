@@ -1,0 +1,178 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.header {
+    width: 100%;
+    height: 1400px;
+    background-image: url(../backgruond.jpg);
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.header > * {
+    transform: translateX(-45%); 
+}
+
+.header_div{
+    margin-top: 80px;
+    /* margin-left: 0px; */
+    left: -210px;
+    position: relative;
+
+}
+
+.header-title {
+    font-size: 5rem;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    bottom: 100px;
+    position: relative;
+}
+
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px #2AA5A0;
+    }
+    100% {
+        box-shadow: 0 0
+    }
+}
+.header button{
+    animation: glow 3s infinite !important; 
+}
+
+.uk-navbar-container{
+    background: none !important;
+    position:fixed;
+    top: 10px;
+    justify-self: right;
+}
+
+.uk-navbar-toggle{
+    color: black !important;
+    transform: scale(1.5);
+}
+
+.prof{
+    font-size:2rem;
+    line-height:26px;
+    text-align:left;
+    line-height: 1.1;
+    left: -30px;
+    position: relative;
+    font-weight: 500;
+    top: 200px;
+    font-family:'Gilroy';
+    list-style-type: none;
+    color: 	rgb(126, 109, 88);
+    /* background-color: #2AA5A0;
+    background-image: linear-gradient(90deg,#ffffff,#2AA5A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    font-weight: 700;
+
+}
+
+
+.services {
+    padding: 50px 0;
+    text-align: center;
+    background: #f9f9f9;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+.uk-card {
+    border-radius: 15px;
+    margin-left: 5%;
+    margin-right:5% ;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.uk-card:hover {
+    transform: scale(1.05);
+    box-shadow: 13px 11px rgb(0 0 0 / 22%);
+}
+
+.uk-list {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.uk-card-title {
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+
+
+
+.education {
+    background-color: #173a6f;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+.edu-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Gilroy', sans-serif;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-date {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 150px;
+    text-align: center;
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    text-align: left;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    text-align: right;
+}
