@@ -82,8 +82,11 @@ body,html {
     border-radius:10px !important;
     animation: glow 3s infinite;
     text-align: center;
-
 }
+/* 
+#service a{
+
+} */
 
 
 .services {

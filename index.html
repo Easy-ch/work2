@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Elena Alhazova</title>
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/uikit.min.css" />
     <link rel="stylesheet" href="css/">
     <link rel="stylesheet" href="css/style.css">
@@ -53,9 +54,14 @@
             </ul>
         </div>
 
-
         
-        <button class="uk-button uk-button-primary" id="service"><span>Записаться на консультацию</span></button>
+       <button oncli class="uk-button uk-button-primary" id="service"><span>Записаться на консультацию</span></button>
+
+       <script>
+            document.getElementById("service").addEventListener("click", function() {
+                window.location.href = 'https://vk.com/im?entrypoint=community_page&media=&sel=-216226861';
+            });
+        </script>
 
     </header>
     <section class="services" id="services">
@@ -70,6 +76,8 @@
                         <li>планирование беременности</li>
                         <li>эндокринные заболевания</li>
                         <li>профилактические осмотры</li>
+                        <li>менопаузальные расстройства</li>
+                        <li>подбор менопаузальной гормональной терапии</li>
                     </ul>
                 </div>
             </div>
@@ -431,10 +439,10 @@
                 <div class="text-on-footer">
                     <h3 class="uk-heading-bullet">Обо мне</h3>
                     <div style="padding-left: 20px;">
-                        <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>
-                        <a href="" class="uk-icon-button uk-margin-small-right "><i class="fa-brands fa-vk"></i></a>
+                        <a href=" https://www.instagram.com/dr.alkhazova?igsh=MWYwYmdnZHcxYnhvNg%3D%3D&utm_source=qr" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>
+                        <a href="https://vk.com/doctor_alhazova_arh" class="uk-icon-button uk-margin-small-right "><i class="fa-brands fa-vk"></i></a>
         
-                        <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="telegram"></a>
+                        <a href="https://t.me/DrAlenaA" class="uk-icon-button uk-margin-small-right" uk-icon="telegram"></a>
                         <p><span class="uk-margin-small-right" uk-icon="icon: info; ratio: 1"></span><a href="#service" uk-scroll="offset: 800">Запись на прием</a></p>
                         <!-- <p><span class="uk-margin-small-right" uk-icon="icon: file-text; ratio: 1"></span>&ensp;<span style="color: #ffffff;"></span></p> -->
                     </div>
