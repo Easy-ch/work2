@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн консультации</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/uikit.min.css"/>
+    <link rel="stylesheet" href="css/online-services.css">
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <b>ОНЛАЙН — КОНСУЛЬТАЦИЯ</b>
+            <p style="text-align: center;">Данная услуга позволяет Вам, находясь в любой точке мира, обсудить возникшие проблемы женского здоровья со специалистом в формате видеоконференции.
+               <br>Очный прием  веду в Университетской клинике (ул.Воскресенская 14)
+            </p>
+        </div>
+
+        <hr class="uk-divider-icon">
+
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-1@m" style="padding: 15px; margin-bottom: 40px; background-color: #FCEEEF; border-radius: 10px;">
+            <h3 style="margin-bottom: 5px;" class="uk-card-title">ВАЖНО!</h3>
+            <p style="margin: 5px; text-align: center;">
+                ‌Услуги Алхазовой Елены не имеют статуса медицинских услуг, так как не являются медицинским вмешательством, проводятся дистанционно, без осмотра, и не направлены на постановку медицинского диагноза, 
+                назначение лекарственных средств, медицинских изделий, дачу каких-либо медицинских назначений в связи с имеющимся у клиента заболеванием (состоянием).
+            </p>
+            <p>Также, онлайн-консультация не заменяет очного приема специалиста и носит разъяснительно — рекомендательный характер.</p>
+        </div>
+
+
+        <ul uk-accordion="collapsible: true">
+            <li>
+                <a class="uk-accordion-title" href>Как проходит?</a>
+                <div class="uk-accordion-content">
+                    <p>После отпарвки заявки врач связывается с Вами в WhatsApp в течении 24 часов, Вы заполняете анкету, высылаете в чат все актуальные анализы и обследования, которые считаете необходимыми, и договариваетесь об обоюдноудобном времени для видеосозвона, где врач отвечает на все Ваши вопросы и дает дальнейшие рекомендации.</p>
+                </div>
+            </li>
+            <li>
+                <a class="uk-accordion-title" href>Сколько длится?</a>
+                <div class="uk-accordion-content">
+                    <p>По времени видео-консультация длится примерно 30−40 минут.</p>
+                </div>
+            </li>
+            <li>
+                <a class="uk-accordion-title" href>Как подготовиться?</a>
+                <div class="uk-accordion-content">
+                    <p>Чтобы общение прошло максимально продуктивно, рекомендуем заранее составить список интересующих Вас вопросов.    </p>
+                </div>
+            </li>
+        </ul>
+
+        <div style="margin-top: 30px; margin-bottom: 20px;" class="text">
+            <b > ОСТАВИТЬ ЗАЯВКУ НА ОНЛАЙН-КОНСУЛЬТАЦИЮ</b>
+        </div>
+
+        <div class="price-container">
+            <span class="price-label">Цена</span>
+            <span class="price-dots"></span>
+            <span class="price-value">2000 ₽</span>
+        </div>
+        
+        <form class="form-user">
+            <div class="input-group">
+                <input type="text" id="name" required>
+                <label for="name">Ваше имя</label>
+            </div>
+    
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+    
+            <div class="input-group">
+                <input type="tel" id="phone" required>
+                <label for="phone">Номер телефона</label>
+            </div>
+
+            <p id="error-message"></p>
+            <button class="request_btn"  type="submit">Отправить</button>
+        </form>
+     
+    
+        <script>
+            let lastSubmitTime = 0;
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector(".form-user").addEventListener("submit", function (event) {
+                    event.preventDefault(); 
+                    // errorMessage.textContent = "";
+    
+                    const name = document.getElementById("name").value;
+                    const email = document.getElementById("email").value;
+                    const phone = document.getElementById("phone").value;
+                    const errorMessage = document.getElementById("error-message");
+                    const text = `🔔 Заявка на онлайн - консультацию! \n👤 Имя: ${name} \n📧 Email: ${email} \n📞 Телефон: ${phone} \n`;
+    
+                    const now = Date.now();
+                    if (now - lastSubmitTime < 15000) { 
+                        errorMessage.textContent = "Слишком часто! Подождите 15 секунд.";
+                        errorMessage.style = "color: red; margin-bottom: 10px;";
+                        return;
+                    }
+                    lastSubmitTime = now;
+                    if(phone.length<10 ||  !(phone.charAt(0) === '+' || phone.charAt(0) === '8')){
+                        errorMessage.textContent = "введите корректный номер телефона"
+                        errorMessage.style = "height: min-content; color: red;";
+                    }
+                    else{
+                        fetch("https://dry-mouse-7a60.vanuxatelny.workers.dev", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            
+                            text: text,
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.ok){
+                            event.target.reset(); 
+                            errorMessage.textContent =  "Успешно отправлено!"
+                            errorMessage.style = "height: min-content; color: green;";
+                        }
+                        else{
+                            errorMessage.textContent = "Произошла ошибка"
+                            errorMessage.style = "height: min-content; color: red;";
+                        }
+    
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        errorMessage.textContent = "Произошла ошибка.";
+                        errorMessage.style = "height: min-content; color: red; margin-bottom: 10px;";
+                    });
+                    }
+    
+    
+                });
+            });
+        </script>
+    </div>
+
+
+</body>
+</html>
